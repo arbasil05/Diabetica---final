@@ -10,8 +10,10 @@ import math
 from .models import Patient
 
 def home(request):
-    return render(request,'Home.html')
+    return render(request,'home.html')
 
+def forms(request):
+    return render(request,'form.html')
 
 def diabetes(request):
     if request.method == 'POST':
@@ -129,7 +131,7 @@ def diabetes(request):
                                              'bmi_output':ideal_bmi(bmi)})
         
         
-    return render(request, 'Home.html')
+    return render(request, 'home.html')
 
 def ideal_cholesterol(ch_lvl, age):
     ideal_cholesterol_level = ""

@@ -24,11 +24,12 @@ def diabetes(request):
         gender = request.POST.get("gender")
         height_cms = float(request.POST.get("height"))
         weight_kgs = float(request.POST.get("weight"))
-        sys_bp = request.POST.get("sysbp")
-        dia_bp = request.POST.get("diabp")
-        waist = request.POST.get("waist")
-        hip = request.POST.get("hip")
+        sys_bp = int(request.POST.get("sysbp"))
+        dia_bp = int(request.POST.get("diabp"))
+        waist = int(request.POST.get("waist"))
+        hip = int(request.POST.get("hip"))
 
+        #orm:
         patient = Patient.objects.create(
             chol_level=chol_level,
             glu_lvl=glu_lvl,

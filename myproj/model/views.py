@@ -2,11 +2,13 @@ from django.shortcuts import render
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-#from sklearn.metrics import accuracy_score,confusion_matrix,classification_report
+from sklearn.metrics import accuracy_score,confusion_matrix,classification_report
 from sklearn.preprocessing import LabelEncoder
 import math
+from math import floor
 from .models import Patient
 
 def home(request):
@@ -22,8 +24,8 @@ def diabetes(request):
         hdl_glu = int(request.POST.get("hdlchol"))
         age = int(request.POST.get("age"))
         gender = request.POST.get("gender")
-        height_cms = float(request.POST.get("height"))
-        weight_kgs = float(request.POST.get("weight"))
+        height_cms = int(request.POST.get("height"))
+        weight_kgs = int(request.POST.get("weight"))
         sys_bp = int(request.POST.get("sysbp"))
         dia_bp = int(request.POST.get("diabp"))
         waist = int(request.POST.get("waist"))
@@ -48,16 +50,16 @@ def diabetes(request):
         
         
         # finding hdl_ratio:
-        chol_hdl_ratio = int(chol_level) / int(hdl_glu)
-        #hip_waise_ratio:
-        weight_pounds = weight_kgs * 2.20462 
+        chol_hdl_ratio = round((chol_level) / (hdl_glu),1)
+        #hip_waist_ratio:
+        weight_pounds = int(round((weight_kgs * 2.2)))
         height_meter = height_cms / 100
-        hip_waist_ratio = (int(hip) / int(waist))
-        print("Height in cm: ",height_cms)
-        print("Height in m: ",height_meter)
+        hip_waist_ratio = round((waist/hip),2)
+        # print("Height in cm: ",height_cms)
+        # print("Height in m: ",height_meter)
 
         #cms to inches:
-        height_inches = height_cms/2.54
+        height_inches = int(round(height_cms/2.54))
 
 
         #gender_to_num;
@@ -70,9 +72,9 @@ def diabetes(request):
         
         #bmi:
         bmi = weight_kgs / (height_meter * height_meter)
-        bmi=round(bmi,2)
+        bmi=round(bmi,1)
         #print(bmi)       
-        #print(chol_hdl_ratio)
+        # print(chol_hdl_ratio)
         #print(new_gen)
         # print("Cholestrol: ",chol_level)
         # print("Glucose level: ",glu_lvl)
@@ -80,7 +82,7 @@ def diabetes(request):
         # print("HDL_Cholestrol_ratio: ",chol_hdl_ratio)
         # print("Age: ",age)
         # print("Gender:",new_gen)
-        #print("Height in inches: ",height_inches)
+        # print("Height in inches: ",height_inches)
         # print("Weight: ",weight_pounds)
         # print("bmi: ",bmi)
         # print("systolic blood pressure: ",sys_bp)
@@ -88,9 +90,26 @@ def diabetes(request):
         # print("Waist: ",waist)
         # print("Hip: ",hip)
         # print("Hip_Waist_Ratio: ",hip_waist_ratio)
+        
+        # print("Cholestrol: ",type(chol_level))
+        # print("Glucose level: ",type(glu_lvl))
+        # print("HDL glucose level: ",type(hdl_glu))
+        # print("HDL_Cholestrol_ratio: ",type(chol_hdl_ratio))
+        # print("Age: ",type(age))
+        # print("Gender:",type(new_gen))
+        # print("Height in inches: ",type(height_inches))
+        # print("Weight: ",type(weight_pounds))
+        # print("bmi: ",type(bmi))
+        # print("systolic blood pressure: ",type(sys_bp))
+        # print("Diastolic Blood pressure: ",type(dia_bp))
+        # print("Waist: ",type(waist))
+        # print("Hip: ",type(hip))
+        # print("Hip_Waist_Ratio: ",type(hip_waist_ratio))
         list_1 = [chol_level,glu_lvl,hdl_glu,chol_hdl_ratio,age,new_gen,height_inches,weight_pounds,bmi,sys_bp,dia_bp,waist,hip,hip_waist_ratio]
-        #print(list_1)
-        df = pd.read_csv("D:/cn project/diabetes.csv")
+        print(list_1)
+        for i in list_1:
+            print(type(i))
+        df = pd.read_csv("C:/basil/hehe/Diabetica---final/myproj/model/diabetes.csv")
         #print(df.head())
         def float_to_numeric(df,columns):
             for i in columns:
@@ -106,11 +125,13 @@ def diabetes(request):
 
         y=df.diabetes.values
         X=df.drop(columns=["diabetes","patient_number"])
-        train_X,test_X,train_y,test_y=train_test_split(X,y,test_size=0.2,random_state=17,shuffle=True,stratify=y)
+        train_X,test_X,train_y,test_y=train_test_split(X,y,test_size=0.2,random_state=38)
 
-        lr = LogisticRegression(solver='liblinear', random_state=42)
+        lr = LogisticRegression(solver='liblinear',random_state=42)
         lr.fit(train_X, train_y)
         predictions = lr.predict(test_X)
+        accuracy=accuracy_score(test_y,predictions)
+        print("acc:",accuracy)
         #test_X.shape
         #test_X.iloc[16:17]
         a= list_1
@@ -118,10 +139,10 @@ def diabetes(request):
         a1.reshape(1,-1)
         a11=(pd.DataFrame(a1)).T
         new_pred=lr.predict(a11)
-        yes = "You don't have Diabetes"
-        No = "You probably have diabetes"
+        no = "You don't have Diabetes"
+        yes = "You probably have diabetes"
         if(new_pred==[0]):
-            final = No
+            final = no
         else:
             final = yes
 

@@ -20,6 +20,7 @@ def choice(request):
 def forms(request):
     return render(request,'form.html')
 
+#fix this function vizz 🦖🦖🦖
 def demo(request):
     # loading the dataset
     data = pd.read_csv("D:/cn 2.o/diabetes.csv")

@@ -38,9 +38,17 @@
     </style>
 </head>
 <body>
+    {% block content %}
     <div class="container">
-        <button class="btn" id="btn1">Click here for Demo</button>
-        <button class="btn" id="btn2">Click here for user input</button>
+        <form action="demo">
+            {% csrf_token %}
+            <button class="btn" id="btn1">Click here for Demo</button>
+        </form>
+        <form action="forms">
+            {% csrf_token %}
+            <button class="btn" id="btn2">Click here for user input</button>
+        </form>
     </div>
+    {% endblock %}
 </body>
 </html>

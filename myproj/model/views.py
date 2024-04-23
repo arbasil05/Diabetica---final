@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import numpy as np
 import pandas as pd
+import random
 import matplotlib.pyplot as plt
 
 from sklearn.model_selection import train_test_split
@@ -23,7 +24,11 @@ def forms(request):
 #fix this function vizz 🦖🦖🦖
 def demo(request):
     # loading the dataset
-    data = pd.read_csv("D:/cn 2.o/diabetes.csv")
+    #basil's
+    # data = pd.read_csv("D:/cn 2.o/diabetes.csv")
+
+    #vizz's
+    data=pd.read_csv('C:/basil/hehe/Diabetica---final/diabetes.csv')
    
     # Preprocessing the data
     data['chol_hdl_ratio'] = data['chol_hdl_ratio'].str.replace(',','.').astype(float)
@@ -46,8 +51,12 @@ def demo(request):
     predictions = lr.predict(test_X)
     
     # Randomly choosing the row
-    max_rows = data.shape[0]
-    random_index = np.random.randint(0,max_rows)
+    max_rows=[]
+    indexes = list(data.index[data['diabetes'] == 1][:60])
+    indexes2 = list(data.index[data['diabetes'] == 0][:60])
+    max_rows=indexes.copy()
+    max_rows.extend(indexes2)
+    random_index = random.choice(max_rows)
     random_row = data.iloc[random_index]
     #print(random_row)
     a = random_row.iloc[1:-1]
@@ -81,7 +90,7 @@ def demo(request):
     new_pred = lr.predict(a11)
 
     # Decode the prediction
-    no = "You don't have Diabetes"
+    no = "You probably don't have Diabetes"
     yes = "You probably have diabetes"
     if(new_pred==[0]):
         final = no
@@ -90,14 +99,14 @@ def demo(request):
 
     print(final)
     return render(request,'demo.html',{'Final_Answer':final,
-                                       'chol_valu':chol_valu,
-                                       'glu':glu,
-                                       'HDL':HDL,
+                                       'chol_valu':int(chol_valu),
+                                       'glu':int(glu),
+                                       'HDL':int(HDL),
                                        'BMI':BMI,
-                                       'Age':age,
+                                       'Age':int(age),
                                        'Gender' : gender,
-                                       'height':height,
-                                       'weight':weight,
+                                       'height':int(height),
+                                       'weight':int(weight),
                                        'Cholesterol_Analysis':ideal_chol,
                                        'HDL_Analysis':ideal_hdl,
                                        'Glucose_Analysis':ideal_glu,

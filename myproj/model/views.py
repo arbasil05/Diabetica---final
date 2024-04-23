@@ -14,8 +14,8 @@ from .models import Patient
 def home(request):
     return render(request,'home.html')
 
-def forms(request):
-    return render(request,'form.html')
+def choice(request):
+    return render(request,'choice.html')
 
 def diabetes(request):
     if request.method == 'POST':
@@ -109,7 +109,7 @@ def diabetes(request):
         print(list_1)
         for i in list_1:
             print(type(i))
-        df = pd.read_csv("C:/Users/arbas/OneDrive/Desktop/cn 2.o/myproj/model/diabetes.csv")
+        df = pd.read_csv("D:\cn 2.o\diabetes.csv")
         #print(df.head())
         def float_to_numeric(df,columns):
             for i in columns:

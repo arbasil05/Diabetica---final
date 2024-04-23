@@ -49,10 +49,13 @@ def demo(request):
     random_index = np.random.randint(0,max_rows)
     random_row = data.iloc[random_index]
     print(random_row)
-
+    a = random_row.iloc[1:-1]
+    a1=np.array(a)
+    a1.reshape(1,-1)
+    a11=(pd.DataFrame(a1)).T
     # Prepare the selected row for prediction
     random_row_values = random_row.drop(['diabetes','patient_number']).values.reshape(1,-1)
-    new_pred = lr.predict(random_row_values)
+    new_pred = lr.predict(a11)
 
     # Decode the prediction
     no = "You don't have Diabetes"

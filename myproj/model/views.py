@@ -51,6 +51,26 @@ def demo(request):
     random_row = data.iloc[random_index]
     #print(random_row)
     a = random_row.iloc[1:-1]
+    list_a = a.tolist()
+    print(list_a[0])
+    chol_valu = list_a[0]
+    glu = list_a[1]
+    HDL = list_a[2]
+    age = list_a[4]
+    BMI = list_a[8]
+    gender = list_a[6]
+    if (gender == 0):
+        gender = "Female"
+    else:
+        gender = "Male"
+    height = list_a[7]
+    weight = list_a[8]
+    
+    ideal_chol = ideal_cholesterol(chol_valu,age)
+    ideal_hdl = ideal_hdl_cholestrol(HDL,gender,age)
+    ideal_glu = ideal_glucose_level(age,gender,glu)
+    ideal_bmis = ideal_bmi(BMI)
+
     a1=np.array(a)
     a1.reshape(1,-1)
     a11=(pd.DataFrame(a1)).T
@@ -69,7 +89,21 @@ def demo(request):
         final = yes
 
     print(final)
-    return render(request,'demo.html',{'Final_Answer':final})
+    return render(request,'demo.html',{'Final_Answer':final,
+                                       'chol_valu':chol_valu,
+                                       'glu':glu,
+                                       'HDL':HDL,
+                                       'BMI':BMI,
+                                       'Age':age,
+                                       'Gender' : gender,
+                                       'height':height,
+                                       'weight':weight,
+                                       'Cholesterol_Analysis':ideal_chol,
+                                       'HDL_Analysis':ideal_hdl,
+                                       'Glucose_Analysis':ideal_glu,
+                                       'BMI_Analysis' : ideal_bmis
+
+                                       })
 
 def diabetes(request):
     if request.method == 'POST':

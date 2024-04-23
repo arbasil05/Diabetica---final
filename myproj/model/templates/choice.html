@@ -61,10 +61,23 @@
 </head>
 
 <body>
+    {% block content %}
     <div class="container">
+<<<<<<< HEAD
         <button class="btn" id="thebutton">Demo</button>
         <button class="btn" id="thebutton">User Input</button>
+=======
+        <form action="demo">
+            {% csrf_token %}
+            <button class="btn" id="btn1">Click here for Demo</button>
+        </form>
+        <form action="forms">
+            {% csrf_token %}
+            <button class="btn" id="btn2">Click here for user input</button>
+        </form>
+>>>>>>> a3568b0a0f964c84e17b881273ec967c26872694
     </div>
+    {% endblock %}
 </body>
 
 </html>

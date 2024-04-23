@@ -7,6 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home),
     path('diabetes',views.diabetes),
+    path('choice',views.choice),
     path('forms',views.forms)
 ]
 

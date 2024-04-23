@@ -90,8 +90,8 @@ def demo(request):
     new_pred = lr.predict(a11)
 
     # Decode the prediction
-    no = "You probably don't have Diabetes"
-    yes = "You probably have diabetes"
+    no = "You probably don't have Diabetes."
+    yes = "You probably have diabetes."
     if(new_pred==[0]):
         final = no
     else:

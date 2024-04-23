@@ -20,6 +20,9 @@ def choice(request):
 def forms(request):
     return render(request,'form.html')
 
+def demo(request):
+    return render(request,'demo.html')
+
 def diabetes(request):
     if request.method == 'POST':
         chol_level = int(request.POST.get("cholestrol"))

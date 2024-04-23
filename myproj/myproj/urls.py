@@ -8,7 +8,8 @@ urlpatterns = [
     path('',views.home),
     path('diabetes',views.diabetes),
     path('choice',views.choice),
-    path('forms',views.forms)
+    path('forms',views.forms),
+    path('demo',views.demo)
 ]
 
 if settings.DEBUG:

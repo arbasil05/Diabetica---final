@@ -21,7 +21,49 @@ def forms(request):
     return render(request,'form.html')
 
 def demo(request):
-    return render(request,'demo.html')
+    # loading the dataset
+    data = pd.read_csv("D:/cn 2.o/diabetes.csv")
+   
+    # Preprocessing the data
+    data['chol_hdl_ratio'] = data['chol_hdl_ratio'].str.replace(',','.').astype(float)
+    data['bmi'] = data['bmi'].str.replace(',','.').astype(float)
+    data['waist_hip_ratio'] = data['waist_hip_ratio'].str.replace(',','.').astype(float)
+    data['gender'] = data['gender'].replace({'male':1,'female':0})
+
+    # Encode the target variable 'diabetes' using LabelEncoder
+    le = LabelEncoder()
+    data['diabetes'] = le.fit_transform(data['diabetes'])
+
+    # Test and train data
+    y = data['diabetes'].values
+    X = data.drop(columns=['diabetes','patient_number'])
+    train_X,test_X,train_y,test_y = train_test_split(X,y,test_size=0.2,random_state=48)
+
+    # Training the model
+    lr = LogisticRegression(solver='liblinear',random_state=42)
+    lr.fit(train_X,train_y)
+    predictions = lr.predict(test_X)
+    
+    # Randomly choosing the row
+    max_rows = data.shape[0]
+    random_index = np.random.randint(0,max_rows)
+    random_row = data.iloc[random_index]
+    print(random_row)
+
+    # Prepare the selected row for prediction
+    random_row_values = random_row.drop(['diabetes','patient_number']).values.reshape(1,-1)
+    new_pred = lr.predict(random_row_values)
+
+    # Decode the prediction
+    no = "You don't have Diabetes"
+    yes = "You probably have diabetes"
+    if(new_pred==[0]):
+        final = no
+    else:
+        final = yes
+
+    print(final)
+    return render(request,'demo.html',{'Final_Answer':final})
 
 def diabetes(request):
     if request.method == 'POST':
@@ -112,10 +154,10 @@ def diabetes(request):
         # print("Hip: ",type(hip))
         # print("Hip_Waist_Ratio: ",type(hip_waist_ratio))
         list_1 = [chol_level,glu_lvl,hdl_glu,chol_hdl_ratio,age,new_gen,height_inches,weight_pounds,bmi,sys_bp,dia_bp,waist,hip,hip_waist_ratio]
-        print(list_1)
-        for i in list_1:
-            print(type(i))
-        df = pd.read_csv("D:\cn 2.o\diabetes.csv")
+        # print(list_1)
+        # for i in list_1:
+        #     print(type(i))
+        # df = pd.read_csv("D:\cn 2.o\diabetes.csv")
         #print(df.head())
         def float_to_numeric(df,columns):
             for i in columns:

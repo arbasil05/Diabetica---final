@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetica | Choose</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500&display=swap" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <style>
+        body {
+            background-color: #28bf96;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: "Rajdhani", sans-serif;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 100px;
+        }
+
+        #thebutton {
+            height: 12rem;
+            width: 18rem;
+            cursor: pointer;
+            outline: 0;
+            border: 3px solid white;
+            border-radius: 5px;
+            background-color: white;
+            color: #28bf96;
+            /* margin-left: 20%; */
+            /* margin-top: 30px; */
+            padding: 10px;
+            font-size: 30px;
+            font-weight: 500;
+            transform: scale(1);
+            transition: background-color 0.2s, color 0.2s, transform 0.2s, border 0.2s;
+        }
+
+        #thebutton:hover {
+            background: #28bf96;
+            color: white;
+            transform: scale(0.90);
+            border: 2px solid #9EC8B9;
+            transition: background-color 0.2s, color 0.2s, transform 0.2s, border 0.2s;
+        }
+
+        #thebutton:active {
+            transform: scale(0.8);
+            transition: transform 0.2s;
+        }
+    </style>
+</head>
+
+<body>
+    {% block content %}
+    <div class="container">
+        <form action="demo">
+            {% csrf_token %}
+        <button class="btn" id="thebutton">Demo</button>
+        </form>
+        <form action="forms">
+            {% csrf_token %}
+        <button class="btn" id="thebutton">User Input</button>
+        </form>
+    </div>
+    {% endblock %}
+</body>
+
+</html>

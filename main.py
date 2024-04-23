@@ -7,7 +7,7 @@ from sklearn.metrics import accuracy_score,confusion_matrix,classification_repor
 from sklearn.preprocessing import LabelEncoder
 
 df = pd.read_csv("diabetes.csv")
-#print(df.tail(30))
+print(df.tail(30))
 
 def float_to_numeric(df,columns):
     for i in columns:
@@ -48,4 +48,4 @@ new_pred=lr.predict(a11)
 if(new_pred==[0]):
   print('You Probably dont have diabetes')
 else:
-  print("BYE-BYE🗣️🗿")
+  print("You have diabetes")

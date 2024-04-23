@@ -1,128 +1,253 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diabetico</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-        crossorigin="anonymous">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <title>Diabetica | Home</title>
     <style>
-        body {
-            background-color:#56c8c9;
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-            flex-wrap: wrap;
-            height: 100vh;
-        }
+        @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
-        .form-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            font-family:"Montserrat" ;
-            padding: 30px;
-        }
-        .text{
-            font-family:"Montserrat" ;
-            font-weight: 300;
-            font-size: 50px;
-            margin-left: 30px;
-        }
+:root {
+  --primary-color: #28bf96;
+  --primary-color-dark: #209677;
+  --text-dark: #111827;
+  --text-light: #6b7280;
+  --white: #ffffff;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  color: var(--white);
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--primary-color-dark);
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  padding: 2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.nav__logo {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.nav__links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.link a {
+  text-decoration: none;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.link a:hover {
+  color: var(--primary-color);
+}
+
+.header {
+  padding: 0 1rem;
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  align-items: center;
+}
+
+.content h1 {
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.content h1 span {
+  font-weight: 400;
+}
+
+.content p {
+  margin-bottom: 2rem;
+  color: var(--text-light);
+  line-height: 1.75rem;
+  text-align: justify
+}
+
+.image {
+  position: relative;
+  text-align: center;
+  isolation: isolate;
+}
+
+.image__bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 450px;
+  width: 450px;
+  background-color: var(--primary-color);
+  border-radius: 100%;
+  z-index: -1;
+}
+
+.image img {
+  width: 100%;
+  max-width: 475px;
+}
+
+.image__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-align: left;
+  background-color: var(--white);
+  border-radius: 5px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.image__content__1 {
+  transform: translate(calc(-50% - 12rem), calc(-50% - 8rem));
+}
+
+.image__content__1 span {
+  padding: 10px 12px;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  background-color: #defcf4;
+  border-radius: 100%;
+}
+
+.image__content__1 h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.image__content__1 p {
+  color: var(--text-light);
+}
+
+.image__content__2 {
+  transform: translate(calc(-50% + 8rem), calc(-50% + 10rem));
+}
+
+.image__content__2 ul {
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+}
+
+.image__content__2 li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: var(--text-light);
+}
+
+.image__content__2 span {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+@media (width < 900px) {
+  .nav__links {
+    display: none;
+  }
+
+  .header {
+    padding: 1rem;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .content {
+    text-align: center;
+  }
+
+  .image {
+    grid-area: 1/1/2/2;
+  }
+}
+
     </style>
-</head>
-
-<body>
+  </head>
+  <body>
     {% block content %}
-    <div class="text">
-        Welcome to Diabetica
-    </div>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-10">
-                <div class="form-container">
-                    <h2 class="text-center">Fill in the below form</h2>
-                    <form action="diabetes" method="post">
-                        {% csrf_token %}
-                        <div class="form-group row">
-                            <label for="input1" class="col-sm-4 col-form-label">Cholesterol level</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="input1" placeholder="Enter Cholesterol level">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="input2" class="col-sm-4 col-form-label">Glucoseeee</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="input2" placeholder="Enter Glucose">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="input3" class="col-sm-4 col-form-label">HDL-Cholesterol</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="input3" placeholder="Enter HDL-Cholesterol">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="input4" class="col-sm-4 col-form-label">Age</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="input4" placeholder="Enter Age">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="input5" class="col-sm-4 col-form-label">Gender</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="input5" placeholder="Enter Gender">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="input6" class="col-sm-4 col-form-label">Height</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="input6" placeholder="Enter Height">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="input7" class="col-sm-4 col-form-label">Weight</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="input7" placeholder="Enter Weight">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="input8" class="col-sm-4 col-form-label">Systolic blood pressure</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="input8" placeholder="Enter Systolic blood pressure">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="input9" class="col-sm-4 col-form-label">Diastolic blood pressure</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="input9" placeholder="Enter Diastolic blood pressure">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="input10" class="col-sm-4 col-form-label">Waist size (in inches)</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="input10" placeholder="Enter Waist size">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="input11" class="col-sm-4 col-form-label">Hip size (in inches)</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="input11" placeholder="Enter Hip size">
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary ml-auto">Submit</button>
-                    </form>
-                </div>
-            </div>
+      <nav>
+        <div class="nav__logo">Diabetica</div>
+        <ul class="nav__links">
+          <li class="link"><a href="#">Home</a></li>
+          <li class="link"><a href="#">About Us</a></li>
+          <li class="link"><a href="#">Contact</a></li>
+        </ul>
+        <form action="choice">
+        {% csrf_token %}
+        <button class="btn">Get Started</button>
+        </form>
+      </nav>
+      <header class="header">
+        <div class="content">
+          <h1><span>Empowering Health,</span><br />One Prediction at a Time</h1>
+          <p>
+            Welcome to Diabetica! Our machine learning model is designed to predict whether a given dataset indicates diabetes. With Diabetica, you can make informed decisions about your health quickly and easily. Start using Diabetica today to gain valuable insights into diabetes prediction.
+          </p>
+          <form action="forms">
+            {% csrf_token %}
+          <button class="btn">Get Services</button>
+          </form>
         </div>
+        <div class="image">
+          <span class="image__bg"></span>
+          <img src="{% static 'assets/header.png' %}" alt="header image" />
+        </div>
+      </header>
     </div>
     {% endblock %}
-</body>
-
+  </body>
 </html>

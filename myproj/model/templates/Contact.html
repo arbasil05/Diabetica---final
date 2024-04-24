@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,21 +9,95 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="contactstyle.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: white;
+            background-color: #28bf96;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background-color: rgb(255, 255, 255, 0.3);
+            padding: 10px;
+            width: 620px;
+            height: 530px;
+            margin-top: 140px;
+            border: 2px solid #28bf96;
+            border-radius: 10px;
+            padding: 10px;
+            display: flex;
+            /* align-items: center; */
+            justify-content: center;
+        }
+
+        h2 {
+            font-family: Rajdhani;
+            font-size: 42px;
+            color: black;
+        }
+
+        .inputfield {
+            /* margin-left:; */
+            outline: 0;
+            border: 0;
+            border-radius: 5px;
+            width: 540px;
+            padding-left: 5px;
+            height: 50px;
+            /* margin-bottom: 4px; */
+            /* column-gap: 10px; */
+        }
+
+        .container p {
+            margin-bottom: 5px;
+            font-size: 18px;
+            font-family: Rajdhani;
+            color: black;
+            /* padding: 5px; */
+        }
+        .card{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .btn{
+            margin-top: 10px;
+            border: none;
+            border-radius: 10px;
+
+            cursor: pointer;
+        }
+        .btn:hover{
+            background-color: gainsboro;
+        }
+    </style>
 </head>
+
 <body>
     <div class="container">
         <div class="card">
+        <!-- <form action="send_email">
+        {% csrf_token %} -->
             <h2>Contact Us</h2>
-            <p>Name:</p>
-            <input class="inputfield" type="text" placeholder="Name">
+            <p>Name</p>
+            <input class="inputfield" type="text" placeholder="Name" name="name">
             <p>Email</p>
-            <input class="inputfield" type="email" placeholder="Email">
+            <input class="inputfield" type="email" placeholder="Email" name = "email">
             <p>Phone Number</p>
-            <input class="inputfield" type="number" placeholder="Phone Number">
+            <input class="inputfield" type="number" placeholder="Phone Number" name="phno">
             <p>Query or Suggestion:</p>
-            <input class="inputfield" type="text" placeholder="Type here...">
-            <!-- <p contenteditable="true" class="inputfield" id="ptag"></p> -->
+            <input class="inputfield" type="text" placeholder="Type here..." name="message">
+            <button class="btn" type="submit">Submit</button>
+        <!-- </form> -->
         </div>
+        
     </div>
 </body>
+
 </html>

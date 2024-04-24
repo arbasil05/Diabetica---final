@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 import random
 import matplotlib.pyplot as plt
-
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score,confusion_matrix,classification_report
@@ -11,7 +10,8 @@ from sklearn.preprocessing import LabelEncoder
 import math
 from math import floor
 from .models import Patient
-
+from django.core.mail import send_mail
+from django.conf import settings
 def home(request):
     return render(request,'home.html')
 
@@ -26,6 +26,22 @@ def about(request):
 
 def contact(request):
     return render(request,'Contact.html')
+
+# def send_email(request):
+#     if request.method == 'POST':
+#         message = request.POST['message']
+#         name = request.POST['name']
+#         email = request.POST['email']
+#         phno = request.POST['phno']
+
+#         message = f"Name: {name}\nEmail: {email}\nPhone Number: {phno}\nQuery: {message}"
+#         send_mail(
+#             'Feedback | Help',
+#             message,
+#             settings.EMAIL_HOST_USER,
+#             ['aafreenb716@gmail.com'],
+#             fail_silently = False)
+#     return render(request,'Home.html')
 
 #fix this function vizz 🦖🦖🦖
 def demo(request):

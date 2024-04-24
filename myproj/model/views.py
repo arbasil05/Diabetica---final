@@ -21,14 +21,20 @@ def choice(request):
 def forms(request):
     return render(request,'form.html')
 
+def about(request):
+    return render(request,'about.html')
+
+def contact(request):
+    return render(request,'Contact.html')
+
 #fix this function vizz 🦖🦖🦖
 def demo(request):
     # loading the dataset
     #basil's
-    # data = pd.read_csv("D:/cn 2.o/diabetes.csv")
+    data = pd.read_csv("D:/cn 2.o/diabetes.csv")
 
     #vizz's
-    data=pd.read_csv('C:/basil/hehe/Diabetica---final/diabetes.csv')
+    #data=pd.read_csv('C:/basil/hehe/Diabetica---final/diabetes.csv')
    
     # Preprocessing the data
     data['chol_hdl_ratio'] = data['chol_hdl_ratio'].str.replace(',','.').astype(float)

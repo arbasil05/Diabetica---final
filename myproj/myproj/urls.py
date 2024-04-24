@@ -12,7 +12,8 @@ urlpatterns = [
     path('forms',views.forms),
     path('demo',views.demo),
     path('about',views.about),
-    path('contact',views.contact)
+    path('contact',views.contact),
+    #path('send_email',views.send_email)
 ]
 
 if settings.DEBUG:

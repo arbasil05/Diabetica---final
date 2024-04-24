@@ -6,10 +6,13 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home),
+    path('home',views.home),
     path('diabetes',views.diabetes),
     path('choice',views.choice),
     path('forms',views.forms),
-    path('demo',views.demo)
+    path('demo',views.demo),
+    path('about',views.about),
+    path('contact',views.contact)
 ]
 
 if settings.DEBUG:

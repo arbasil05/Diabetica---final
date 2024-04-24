@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,28 +8,116 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="aboutstyle.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Rajdhani", sans-serif;
+            font-weight: 550;
+            font-style: normal;
+            font-size: 28px;
+            /* color: white; */
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            /* margin-top: 3%; */
+            background-color: #28bf96;
+            height: 95.8vh;
+            /* width: 100%; */
+            padding: 15px;
+            padding-left: 70px;
+            padding-right: 70px;
+        }
+
+        .section1 {
+            background-color: white;
+            /* width: 100%; */
+            /* min-height: inherit; */
+            margin-bottom: 8rem;
+            /* height: ; */
+        }
+
+        .section1 h2 {
+            margin-left: 625px;
+            color: black;
+            font-weight: 500;
+        }
+
+        .text {
+            display: flex;
+            padding: 50px;
+            /* border: 2px solid black; */
+            margin-top: -40px;
+        }
+
+        p {
+            text-align: center;
+            /* text-transform: capitalize; */
+        }
+
+        /* nav {
+  padding: 2rem 1rem;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+} */
+        .nav__links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .link a {
+            text-decoration: none;
+            color: black;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .link a:hover {
+            color: blue;
+        }
+
+        .container ul {
+            margin-left: 1000px;
+            margin-bottom: 39%;
+            position: absolute;
+        }
+    </style>
 </head>
+
 <body>
     <div class="container">
         <h2>Diabetica</h2>
         <ul class="nav__links">
-            <li class="link"><a href="#">Home</a></li>
-            <li class="link"><a href="#">About Us</a></li>
-            <li class="link"><a href="#">Contact</a></li>
+            <li class="link"><a href="home">Home</a></li>
+            <li class="link"><a href="contact">Contact</a></li>
         </ul>
         <div class="section1">
             <h2><u>About Us</u></h2>
             <div class="text">
-            <p>
-                Step into Diabetica, your trusted companion in health! Our innovative machine learning model is tailor-made to analyze
-                datasets and provide predictions for diabetes detection. With Diabetica by your side, navigating your health journey
-                becomes seamless and insightful. Experience the ease of making informed decisions about your well-being as you explore
-                the comprehensive capabilities of Diabetica. Take the first step towards a healthier future by embracing Diabetica
-                today, where every data point leads to empowered choices.
-            </p>
+                <p>
+                    Step into Diabetica, your trusted companion in health! Our innovative machine learning model is
+                    tailor-made to analyze
+                    datasets and provide predictions for diabetes detection. With Diabetica by your side, navigating
+                    your health journey
+                    becomes seamless and insightful. Experience the ease of making informed decisions about your
+                    well-being as you explore
+                    the comprehensive capabilities of Diabetica. Take the first step towards a healthier future by
+                    embracing Diabetica
+                    today, where every data point leads to empowered choices.
+                </p>
             </div>
         </div>
     </div>
 </body>
+
 </html>

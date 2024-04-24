@@ -206,7 +206,7 @@ def diabetes(request):
         # print(list_1)
         # for i in list_1:
         #     print(type(i))
-        # df = pd.read_csv("D:\cn 2.o\diabetes.csv")
+        df=pd.read_csv('C:/Users/admin/Desktop/basilfinalcnfinal/Diabetica---final/diabetes.csv')
         #print(df.head())
         def float_to_numeric(df,columns):
             for i in columns:

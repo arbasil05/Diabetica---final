@@ -33,6 +33,7 @@
             display: flex;
             /* align-items: center; */
             justify-content: center;
+            padding-bottom: 20px;
         }
 
         h2 {
@@ -49,7 +50,9 @@
             width: 540px;
             padding-left: 5px;
             height: 50px;
+            padding: 10px;
             /* margin-bottom: 4px; */
+            margin-top: -5px;
             /* column-gap: 10px; */
         }
 
@@ -64,17 +67,37 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
+            /* align-items: center; */
+            padding-bottom: 20px;
         }
-        .btn{
-            margin-top: 10px;
-            border: none;
-            border-radius: 10px;
-
+        button{
+            margin-top: 20px;
+            /* border: none; */
+            /* padding-bottom: 20px; */
+            height: 80px;
+            border-radius: 7px;
             cursor: pointer;
+            background-color: #28bf96;
+            border: 2px solid #28bf96;
+            color: white;
+            font-size: 17px;
+            font-family: Rajdhani;
+            font-weight: 550;
+            text-align: center;
+            /* letter-spacing: 1px; */
+            transform: scale(1);
+            transition: transform 0.4s, background-color 0.4s, color 0.4s;
+
         }
-        .btn:hover{
-            background-color: gainsboro;
+        button:hover{
+            background-color: white;
+            color: #28bf96;
+            transform: scale(0.9);
+            transition: transform 0.4s, background-color 0.4s, color 0.4s;
+        }
+        button:active{
+            transform: scale(0.85);
+            transition: transform 0.4s;
         }
     </style>
 </head>
@@ -93,7 +116,7 @@
             <input class="inputfield" type="number" placeholder="Phone Number" name="phno">
             <p>Query or Suggestion:</p>
             <input class="inputfield" type="text" placeholder="Type here..." name="message">
-            <button class="btn" type="submit">Submit</button>
+            <button class="button" type="submit">Submit</button>
         <!-- </form> -->
         </div>
         

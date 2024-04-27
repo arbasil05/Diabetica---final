@@ -10,8 +10,8 @@ from sklearn.preprocessing import LabelEncoder
 import math
 from math import floor
 from .models import Patient
-from django.core.mail import send_mail
-from django.conf import settings
+# from django.core.mail import send_mail
+# from django.conf import settings
 def home(request):
     return render(request,'home.html')
 
@@ -47,7 +47,7 @@ def contact(request):
 def demo(request):
     # loading the dataset
     #basil's
-    data = pd.read_csv("D:/cn 2.o/diabetes.csv")
+    data = pd.read_csv("D:/cn 2.o/myproj/model/diabetes.csv")
 
     #vizz's
     #data=pd.read_csv('C:/basil/hehe/Diabetica---final/diabetes.csv')
@@ -83,7 +83,7 @@ def demo(request):
     #print(random_row)
     a = random_row.iloc[1:-1]
     list_a = a.tolist()
-    print(list_a[0])
+    # print(list_a[0])
     chol_valu = list_a[0]
     glu = list_a[1]
     HDL = list_a[2]
@@ -105,7 +105,7 @@ def demo(request):
     a1=np.array(a)
     a1.reshape(1,-1)
     a11=(pd.DataFrame(a1)).T
-    print(a11)
+    # print(a11)
     
     # Prepare the selected row for prediction
     random_row_values = random_row.drop(['diabetes','patient_number']).values.reshape(1,-1)
@@ -119,7 +119,7 @@ def demo(request):
     else:
         final = yes
 
-    print(final)
+    # print(final)
     return render(request,'demo.html',{'Final_Answer':final,
                                        'chol_valu':int(chol_valu),
                                        'glu':int(glu),
@@ -228,7 +228,7 @@ def diabetes(request):
         # print(list_1)
         # for i in list_1:
         #     print(type(i))
-        df=pd.read_csv('C:/Users/admin/Desktop/basilfinalcnfinal/Diabetica---final/diabetes.csv')
+        df=pd.read_csv('D:/cn 2.o/myproj/model/diabetes.csv')
         #print(df.head())
         def float_to_numeric(df,columns):
             for i in columns:
@@ -250,7 +250,7 @@ def diabetes(request):
         lr.fit(train_X, train_y)
         predictions = lr.predict(test_X)
         accuracy=accuracy_score(test_y,predictions)
-        print("acc:",accuracy)
+        # print("acc:",accuracy)
         #test_X.shape
         #test_X.iloc[16:17]
         a= list_1

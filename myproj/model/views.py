@@ -351,3 +351,4 @@ def ideal_bmi(bmi):
     elif bmi>30:
         return f"Your BMI is {bmi} and you have obesity"
         
+
